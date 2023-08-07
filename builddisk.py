@@ -1,0 +1,26 @@
+import cbmdisk
+
+disk = cbmdisk.Disk(type='D64')
+disk.name='PETSCII ROBOTS'
+disk.files.insert(0, "level-l")
+disk.files.insert(0, "level-k")
+disk.files.insert(0, "level-j")
+disk.files.insert(0, "level-i")
+disk.files.insert(0, "level-h")
+disk.files.insert(0, "level-g")
+disk.files.insert(0, "level-f")
+disk.files.insert(0, "level-e")
+disk.files.insert(0, "level-d")
+disk.files.insert(0, "level-c")
+disk.files.insert(0, "level-b")
+disk.files.insert(0, "level-a")
+disk.files.insert(0, "music.ted")
+disk.files.insert(0, "tileset.gfx")
+disk.files.insert(0, "titlegfx.prg")
+disk.files.insert(0, "gfxfont.prg")
+# Fix for the program stripping off .prg on the inserted file
+file = disk.files.find(cbmdisk.to_petscii("GFXFONT"))
+file.name = cbmdisk.to_petscii("GFXFONT.PRG")
+disk.files.insert(0, "plus4gfx.prg")
+disk.files.insert(0, "loader.prg")
+disk.save("plus4gfx.d64")
