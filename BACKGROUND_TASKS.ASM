@@ -1522,7 +1522,13 @@ TE01:	LDA	UNIT_TYPE,X
 	INX
 	CPX	#32	;max unit for weaponsfire
 	BNE	TE01	
+; not in official digital download / release
+; wrap with conditional so we can build a binary
+; that matches the official one
+!ifndef RELEASED {
 	RTS
+}
+;
 TE02:	LDA	#11	;Small explosion AI type
 	STA	UNIT_TYPE,X
 	LDA	#248	;first tile for explosion
